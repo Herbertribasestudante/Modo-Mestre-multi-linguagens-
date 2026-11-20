@@ -1,0 +1,27 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "hModoMestre — Geometric Ruler for Greek Modes",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Modo Mestre",
+  "start_url": "/Modo-Mestre-multi-linguagens-/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://herbertribasestudante.github.io/Modo-Mestre-multi-linguagens-/icon.svg",
+      "type": "image/svg+xml",
+      "isSquare": false,
+      "isPng": false,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 0,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "id": "/Modo-Mestre-multi-linguagens-/",
+  "description": "Interactive guitar app for Greek modes with a visual geometric fretboard ruler, warm pedal/bass groove, ascending &amp; descending scale playback, soft metronome with separate volumes, notes/degrees toggle, and PT-BR, EN, and ES support."
+}
