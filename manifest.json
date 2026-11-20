@@ -21,5 +21,25 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "/Modo-Mestre-multi-linguagens-/Captura%20de%20tela%202026-11-20%20202517.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/Modo-Mestre-multi-linguagens-/Captura%20de%20tela%202026-11-20%20202539.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/Modo-Mestre-multi-linguagens-/Captura%20de%20tela%202026-11-20%20202552.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
   ]
 }
