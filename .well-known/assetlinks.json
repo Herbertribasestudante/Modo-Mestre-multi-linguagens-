@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.herbertribasestudante.twa",
+        "sha256_cert_fingerprints": ["F7:B1:D7:22:B9:E2:60:8C:CE:1F:60:3E:0B:BE:B8:F6:C9:A3:A7:19:B2:AA:85:0B:02:A2:2A:19:37:5E:79:1B"]
+      }
+    }]
