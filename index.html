@@ -750,36 +750,62 @@
     let backingStep = 0;
 
     function ensureAudio() {
-      if (!audioCtx) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (AudioContextClass) {
-          audioCtx = new AudioContextClass();
-        }
-      }
-      if (audioCtx && audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
+  if (!audioCtx) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      audioCtx = new AudioContextClass();
+
+      const masterGain = audioCtx.createGain();
+      masterGain.gain.value = 2.0;
+
+      const masterCompressor = audioCtx.createDynamicsCompressor();
+      masterCompressor.threshold.setValueAtTime(-18, audioCtx.currentTime);
+      masterCompressor.knee.setValueAtTime(12, audioCtx.currentTime);
+      masterCompressor.ratio.setValueAtTime(6, audioCtx.currentTime);
+      masterCompressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+      masterCompressor.release.setValueAtTime(0.15, audioCtx.currentTime);
+
+      masterGain.connect(masterCompressor);
+      masterCompressor.connect(audioCtx.destination);
+      audioCtx.masterInput = masterGain;
     }
+  }
+  if (audioCtx && audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+}
 
-    function midiToFreq(midi) {
-      return 440 * Math.pow(2, (midi - 69) / 12);
-    }
+function midiToFreq(midi) {
+  return 440 * Math.pow(2, (midi - 69) / 12);
+}
 
-    // Som de corda dedilhada limpa e quente para o braço e reprodução de escala
-    function playGuitarPluck(midi, duration = 0.65, velocity = 1.0) {
-      ensureAudio();
-      if (!audioCtx || state.scaleVol <= 0.001) return;
-      const now = audioCtx.currentTime;
-      const freq = midiToFreq(midi);
-      const peak = state.scaleVol * 0.28 * velocity;
+// Som de corda dedilhada limpa e quente para o braço e reprodução de escala
+function playGuitarPluck(midi, duration = 0.65, velocity = 1.0) {
+  ensureAudio();
+  if (!audioCtx || state.scaleVol <= 0.001) return;
+  const now = audioCtx.currentTime;
+  const freq = midiToFreq(midi);
+  const peak = state.scaleVol * 0.65 * velocity;
+  }
+}
 
-      const osc1 = audioCtx.createOscillator();
-      const osc2 = audioCtx.createOscillator();
-      const osc2Gain = audioCtx.createGain();
-      const filter = audioCtx.createBiquadFilter();
-      const gain = audioCtx.createGain();
+function midiToFreq(midi) {
+  return 440 * Math.pow(2, (midi - 69) / 12);
+}
 
-      osc1.type = "triangle";
+// Som de corda dedilhada limpa e quente para o braço e reprodução de escala
+function playGuitarPluck(midi, duration = 0.65, velocity = 1.0) {
+  ensureAudio();
+  if (!audioCtx || state.scaleVol <= 0.001) return;
+  const now = audioCtx.currentTime;
+  const freq = midiToFreq(midi);
+  const peak = state.scaleVol * 0.65 * velocity;
+
+  const osc1 = audioCtx.createOscillator();
+  const osc2 = audioCtx.createOscillator();
+  const osc2Gain = audioCtx.createGain();
+  const filter = audioCtx.createBiquadFilter();
+  const gain = audioCtx.createGain();      osc1.type = "triangle";
       osc2.type = "sine";
       osc1.frequency.setValueAtTime(freq, now);
       osc2.frequency.setValueAtTime(freq * 2, now);
